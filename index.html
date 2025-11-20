@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Final Project – Football Analytics</title>
+  <meta name="description" content="Instructions for the Football Analytics final project." />
+  <style>
+    :root {
+      --bg: #0e1117;
+      --panel: #161b22;
+      --accent: #2ea44f;
+      --accent-alt: #58a6ff;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --warn: #d29922;
+      --danger: #f85149;
+      --radius: 10px;
+      --font-stack: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: var(--font-stack); background: var(--bg); color: var(--text); line-height:1.5; }
+    header { padding:2.5rem 1.25rem 2rem; text-align:center; }
+    header h1 { margin:0 0 .75rem; font-size:clamp(1.9rem,5vw,2.6rem); }
+    header p { margin:.25rem auto 0; max-width:750px; color:var(--muted); font-size:1.05rem; }
+    nav { position:sticky; top:0; background:rgba(14,17,23,.85); backdrop-filter:blur(8px); border-bottom:1px solid #222; z-index:50; }
+    nav ul { list-style:none; display:flex; flex-wrap:wrap; gap:.5rem .75rem; margin:0; padding:.6rem 1rem; justify-content:center; }
+    nav a { text-decoration:none; color:var(--muted); padding:.35rem .7rem; border-radius:6px; font-size:.85rem; transition:.2s; }
+    nav a:hover, nav a:focus { background:var(--panel); color:var(--text); }
+    main { max-width:1100px; margin:0 auto; padding:0 1.1rem 4rem; }
+    section { background:var(--panel); margin:1.2rem 0; padding:1.25rem 1.25rem 1.4rem; border-radius:var(--radius); border:1px solid #222; }
+    section h2 { margin:0 0 .85rem; font-size:1.35rem; letter-spacing:.5px; }
+    h3 { margin:1.4rem 0 .6rem; font-size:1.05rem; }
+    p, li { font-size:.95rem; }
+    ul, ol { margin:.6rem 0 1rem 1.25rem; }
+    code { background:#1f2329; padding:.15rem .4rem; border-radius:5px; font-size:.85rem; }
+    pre { background:#0f1419; color:var(--text); padding:.8rem; border-radius:8px; overflow:auto; white-space:pre-wrap; word-break:break-word; font-size:.9rem; }
+    pre code { background:transparent; padding:0; border-radius:0; }
+    .grid { display:grid; gap:1rem; }
+    @media (min-width:900px) { .grid.cols-2 { grid-template-columns:1fr 1fr; } }
+    .pill { display:inline-block; padding:.27rem .6rem; background:#1f2329; border:1px solid #222; border-radius:20px; font-size:.7rem; letter-spacing:.5px; text-transform:uppercase; color:var(--muted); }
+    .accent { color:var(--accent-alt); }
+    a.inline { color:var(--accent-alt); text-decoration:none; }
+    a.inline:hover { text-decoration:underline; }
+    .callout { border-left:4px solid var(--accent-alt); padding:.65rem .9rem; background:#1f2329; margin:.85rem 0 1.1rem; border-radius:6px; }
+    .warn { border-left-color:var(--warn); }
+    .danger { border-left-color:var(--danger); }
+    footer { text-align:center; padding:2.5rem 1rem 3rem; color:var(--muted); font-size:.75rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Football Analytics Final Project</h1>
+    <p>Design, implement, and communicate a rigorous end-to-end football analytics investigation. This page outlines objectives, scope, deliverables, evaluation criteria, and resources. Content will be refined collaboratively.</p>
+  </header>
+  <nav aria-label="Section navigation">
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#objectives">Objectives</a></li>
+      <li><a href="#deliverables">Deliverables</a></li>
+      <li><a href="#data">Data</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#evaluation">Evaluation</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#submission">Submission</a></li>
+      <li><a href="#integrity">Integrity</a></li>
+      <li><a href="#getting-started">Getting Started</a></li>
+      <li><a href="#resources">Resources</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section id="overview">
+      <h2>1. Overview</h2>
+      <p>Your goal is to build a small, end-to-end project that demonstrates the three core skills we covered: web scraping to collect data, designing and loading a simple database and writing SQL queries, and creating a minimal web app ("vibe coding") to present your findings.</p>
+      
+    </section>
+
+    <section id="objectives">
+      <h2>2. Project Report (Landing Page)</h2>
+      <p>The main report for your project will be the landing page of your web application (the app's home page). It should clearly document your work and allow a grader or visitor to understand your objective, your data pipeline, and how to use your web app. Include the following sections on that landing page:</p>
+
+      <h3>1. Overview</h3>
+      <p>State your objective and the key insights you hoped to communicate.</p>
+
+      <h3>2. Web Scraping</h3>
+      <p>Your data must come from web scraping (examples: Wikipedia pages, the Mercyhurst Athletics website). In this section describe:</p>
+      <ul>
+        <li>Which pages/URLs you scraped and why.</li>
+        <li>The tools you used (for example, Python `requests` + `BeautifulSoup`).</li>
+      </ul>
+      <p>Include a short example showing the HTTP request + parse step you used. For example:</p>
+      <pre><code>import requests
+from bs4 import BeautifulSoup
+
+url = "https://en.wikipedia.org/wiki/Example_page"
+resp = requests.get(url, timeout=10)
+soup = BeautifulSoup(resp.text, "html.parser")
+# find the table or elements, then extract rows
+table = soup.find("table", {"class": "wikitable"})
+rows = []
+for tr in table.find_all("tr")[1:]:
+    cols = [td.get_text(strip=True) for td in tr.find_all(["th","td"])]
+    rows.append(cols)
+  </code></pre>
+      <p>If you received help from an AI assistant while writing the scraper, include the prompt you used. Example prompt:</p>
+      <pre><code>"Write a Python function that uses requests and BeautifulSoup to scrape the 'Results' table from this Wikipedia page: <URL>. Return a list of dictionaries with keys: 'date', 'home_team', 'away_team', 'score'. Handle missing values and strip whitespace."</code></pre>
+
+      <h3>3. Database</h3>
+      <p>Describe your database design. Explain:</p>
+      <ul>
+        <li>The table(s) and columns you created.</li>
+        <li>The CSV file(s) you exported from the database for the web app (name and column names).</li>
+      </ul>
+      <p>Include sample SQL queries you used to extract and summarize the data. Example queries:</p>
+      <pre><code>-- basic counts
+SELECT season, COUNT(*) AS matches FROM matches GROUP BY season;
+
+-- top scorers (example)
+SELECT player_name, SUM(goals) AS goals FROM player_stats GROUP BY player_name ORDER BY goals DESC LIMIT 10;
+
+-- join example
+SELECT m.date, m.home_team, m.away_team, s.player_name
+FROM matches m
+JOIN player_stats s ON m.match_id = s.match_id
+WHERE m.season = '2024';
+  </code></pre>
+
+      <h3>4. Web Application</h3>
+      <p>Explain how your web app works and how a user should interact with it.</p>
+    </section>
+
+    <section id="deliverables">
+      <h2>3. Deliverables (Draft)</h2>
+      <div class="grid cols-2">
+        <div>
+          <h3>Technical Repository</h3>
+          <ul>
+            <li>Structured code (e.g., `src/`, `data/`, `notebooks/`).</li>
+            <li>Reproducible environment (`requirements.txt` or `pyproject.toml`).</li>
+            <li>Documentation (`README.md` with setup + run instructions).</li>
+            <li>Data dictionary and provenance notes.</li>
+            <li>Clear separation of exploratory vs production notebooks.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Written / Presentation</h3>
+          <ul>
+            <li>Executive summary (≤ 300 words).</li>
+            <li>Methodology section (problem framing, data, model choices).</li>
+            <li>Key visualizations (annotated, publication-quality).</li>
+            <li>Results & interpretation (insight, implications).</li>
+            <li>Limitations & future work.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout warn">
+        <strong>Customization:</strong> Decide whether presentations are live, recorded, slide deck, written report, or dashboard. Provide preferred formats & length.
+      </div>
+    </section>
+
+    <section id="data">
+      <h2>4. Data Sources</h2>
+      <ul>
+        <li><strong>Primary Datasets:</strong> e.g., match events, tracking data, player attributes. (List concrete providers once chosen.)</li>
+        <li><strong>Supplementary:</strong> Weather, betting lines, injuries, salary, physiological metrics.</li>
+        <li><strong>Acquisition:</strong> Provide API keys, rate limits, licensing constraints.</li>
+        <li><strong>Storage:</strong> Encourage raw immutable dump + processed layer.</li>
+        <li><strong>Privacy & Licensing:</strong> Confirm rights for any proprietary feeds.</li>
+      </ul>
+      <p><em>Action Needed:</em> Enumerate permitted sources and any embargo rules.</p>
+    </section>
+
+    <section id="tools">
+      <h2>5. Recommended Tools</h2>
+      <ul>
+        <li>Python (pandas, numpy, scipy, scikit-learn, statsmodels).</li>
+        <li>Visualization: matplotlib, seaborn, plotly, mplsoccer (if soccer), ggplot2 (if R allowed).</li>
+        <li>Advanced: xgboost, lightgbm, PyTorch (if modeling beyond classical).</li>
+        <li>Environment: `conda` or `uv` for reproducibility.</li>
+        <li>Lint/Format: `ruff`, `black`, `pre-commit` hooks.</li>
+        <li>Optional: Jupyter + nbconvert for exporting, Streamlit for lightweight app.</li>
+      </ul>
+      <p>Specify constraints (e.g., no heavy deep learning unless justified).</p>
+    </section>
+
+    <section id="evaluation">
+      <h2>6. Evaluation Criteria (Draft Weights)</h2>
+      <ul>
+        <li><strong>Problem Definition (15%)</strong> Clarity, relevance, measurability.</li>
+        <li><strong>Data & Features (20%)</strong> Quality of sourcing, cleaning, engineering.</li>
+        <li><strong>Methodology & Modeling (20%)</strong> Appropriate technique, validation rigor.</li>
+        <li><strong>Insight & Interpretation (20%)</strong> Actionable conclusions, context.</li>
+        <li><strong>Communication & Visualization (15%)</strong> Clarity, audience fit, design quality.</li>
+        <li><strong>Reproducibility & Code Quality (10%)</strong> Structure, documentation, environment.</li>
+      </ul>
+      <div class="callout">
+        <strong>Customize:</strong> Adjust weights & add a creativity component if desired.
+      </div>
+    </section>
+
+    <section id="timeline">
+      <h2>7. Suggested Timeline</h2>
+      <ol>
+        <li><strong>Week 1:</strong> Topic proposal + question refinement.</li>
+        <li><strong>Week 2:</strong> Data acquisition & initial EDA.</li>
+        <li><strong>Week 3:</strong> Feature engineering & baseline model.</li>
+        <li><strong>Week 4:</strong> Iterative modeling / validation.</li>
+        <li><strong>Week 5:</strong> Visualization polish & narrative drafting.</li>
+        <li><strong>Week 6:</strong> Final integration, QA, presentation prep.</li>
+      </ol>
+      <p><em>Adjust</em> based on actual academic calendar & breaks.</p>
+    </section>
+
+    <section id="submission">
+      <h2>8. Submission Instructions</h2>
+      <ul>
+        <li>Push final repo to GitHub (public or private with instructor access).</li>
+        <li>Tag a release (e.g., `v1.0-final`).</li>
+        <li>Provide link to report/presentation (PDF, deck, site, or app).</li>
+        <li>Include a 2–3 minute demo video link (if required).</li>
+        <li>Fill out reflection form (methodology choices, challenges).</li>
+      </ul>
+      <div class="callout danger">
+        <strong>Need Decision:</strong> Confirm required vs optional deliverables above.
+      </div>
+    </section>
+
+    <section id="integrity">
+      <h2>9. Academic Integrity & Collaboration</h2>
+      <ul>
+        <li>Cite all external code, models, and data sources.</li>
+        <li>Document AI-assisted code (tool + prompt summary).</li>
+        <li>No sharing of proprietary datasets beyond team.</li>
+        <li>Follow license terms for any third-party repository.</li>
+        <li>List each team member's contributions.</li>
+      </ul>
+    </section>
+
+    <section id="getting-started">
+      <h2>10. Getting Started Checklist</h2>
+      <ol>
+        <li>Confirm sport & scope (league, seasons).</li>
+        <li>Create repo with initial README & environment file.</li>
+        <li>Draft project question (submit for quick approval).</li>
+        <li>Acquire & snapshot raw data (immutable).</li>
+        <li>Set up processing pipeline (scripts/notebooks).</li>
+        <li>Define success metrics & validation approach.</li>
+      </ol>
+    </section>
+
+    <section id="resources">
+      <h2>11. Resources</h2>
+      <ul>
+        <li>Course lecture notes (analytics methods).</li>
+        <li>Open data portals (to be listed).</li>
+        <li>Model evaluation guides (cross-validation, calibration).</li>
+        <li>Visualization style guides (club/league branding optional).</li>
+        <li>Ethics & bias readings.</li>
+      </ul>
+      <p>Please provide any fixed resource links you want embedded.</p>
+    </section>
+
+    <section id="next-steps">
+      <h2>Next Steps for Instructor Input</h2>
+      <p>Answer these to refine:</p>
+      <ol>
+        <li>Which football code? (Association vs American or allow either?)</li>
+        <li>Permitted leagues & seasons?</li>
+        <li>Team size (solo, pairs, groups of N)?</li>
+        <li>Presentation format & duration?</li>
+        <li>Are advanced ML / deep learning methods allowed or restricted?</li>
+        <li>Exact evaluation weights & any creativity / impact bonus?</li>
+        <li>Specific datasets to endorse or discourage?</li>
+        <li>Deadline dates (proposal, mid-point check, final submission)?</li>
+        <li>Required reflection questions?</li>
+        <li>Policy on AI tool usage disclosure?</li>
+      </ol>
+    </section>
+  </main>
+  <footer>
+    <p>Draft version – will update as details are finalized.</p>
+    <p>&copy; 2025 Football Analytics Course</p>
+  </footer>
+</body>
+</html>
