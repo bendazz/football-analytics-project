@@ -51,21 +51,13 @@
 <body>
   <header>
     <h1>Football Analytics Final Project</h1>
-    <p>Design, implement, and communicate a rigorous end-to-end football analytics investigation. This page outlines objectives, scope, deliverables, evaluation criteria, and resources. Content will be refined collaboratively.</p>
   </header>
-  <nav aria-label="Section navigation">
+    <nav aria-label="Section navigation">
     <ul>
       <li><a href="#overview">Overview</a></li>
-      <li><a href="#objectives">Objectives</a></li>
-      <li><a href="#deliverables">Deliverables</a></li>
-      <li><a href="#data">Data</a></li>
-      <li><a href="#tools">Tools</a></li>
-      <li><a href="#evaluation">Evaluation</a></li>
-      <li><a href="#timeline">Timeline</a></li>
-      <li><a href="#submission">Submission</a></li>
-      <li><a href="#integrity">Integrity</a></li>
-      <li><a href="#getting-started">Getting Started</a></li>
-      <li><a href="#resources">Resources</a></li>
+      <li><a href="#objectives">Report</a></li>
+      <li><a href="#deliverables">Requirements</a></li>
+      <li><a href="#timeline-submission">Timeline &amp; Submission</a></li>
     </ul>
   </nav>
   <main>
@@ -130,156 +122,38 @@ WHERE m.season = '2024';
     </section>
 
     <section id="deliverables">
-      <h2>3. Deliverables (Draft)</h2>
-      <div class="grid cols-2">
-        <div>
-          <h3>Technical Repository</h3>
-          <ul>
-            <li>Structured code (e.g., `src/`, `data/`, `notebooks/`).</li>
-            <li>Reproducible environment (`requirements.txt` or `pyproject.toml`).</li>
-            <li>Documentation (`README.md` with setup + run instructions).</li>
-            <li>Data dictionary and provenance notes.</li>
-            <li>Clear separation of exploratory vs production notebooks.</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Written / Presentation</h3>
-          <ul>
-            <li>Executive summary (≤ 300 words).</li>
-            <li>Methodology section (problem framing, data, model choices).</li>
-            <li>Key visualizations (annotated, publication-quality).</li>
-            <li>Results & interpretation (insight, implications).</li>
-            <li>Limitations & future work.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="callout warn">
-        <strong>Customization:</strong> Decide whether presentations are live, recorded, slide deck, written report, or dashboard. Provide preferred formats & length.
-      </div>
-    </section>
-
-    <section id="data">
-      <h2>4. Data Sources</h2>
-      <ul>
-        <li><strong>Primary Datasets:</strong> e.g., match events, tracking data, player attributes. (List concrete providers once chosen.)</li>
-        <li><strong>Supplementary:</strong> Weather, betting lines, injuries, salary, physiological metrics.</li>
-        <li><strong>Acquisition:</strong> Provide API keys, rate limits, licensing constraints.</li>
-        <li><strong>Storage:</strong> Encourage raw immutable dump + processed layer.</li>
-        <li><strong>Privacy & Licensing:</strong> Confirm rights for any proprietary feeds.</li>
-      </ul>
-      <p><em>Action Needed:</em> Enumerate permitted sources and any embargo rules.</p>
-    </section>
-
-    <section id="tools">
-      <h2>5. Recommended Tools</h2>
-      <ul>
-        <li>Python (pandas, numpy, scipy, scikit-learn, statsmodels).</li>
-        <li>Visualization: matplotlib, seaborn, plotly, mplsoccer (if soccer), ggplot2 (if R allowed).</li>
-        <li>Advanced: xgboost, lightgbm, PyTorch (if modeling beyond classical).</li>
-        <li>Environment: `conda` or `uv` for reproducibility.</li>
-        <li>Lint/Format: `ruff`, `black`, `pre-commit` hooks.</li>
-        <li>Optional: Jupyter + nbconvert for exporting, Streamlit for lightweight app.</li>
-      </ul>
-      <p>Specify constraints (e.g., no heavy deep learning unless justified).</p>
-    </section>
-
-    <section id="evaluation">
-      <h2>6. Evaluation Criteria (Draft Weights)</h2>
-      <ul>
-        <li><strong>Problem Definition (15%)</strong> Clarity, relevance, measurability.</li>
-        <li><strong>Data & Features (20%)</strong> Quality of sourcing, cleaning, engineering.</li>
-        <li><strong>Methodology & Modeling (20%)</strong> Appropriate technique, validation rigor.</li>
-        <li><strong>Insight & Interpretation (20%)</strong> Actionable conclusions, context.</li>
-        <li><strong>Communication & Visualization (15%)</strong> Clarity, audience fit, design quality.</li>
-        <li><strong>Reproducibility & Code Quality (10%)</strong> Structure, documentation, environment.</li>
-      </ul>
-      <div class="callout">
-        <strong>Customize:</strong> Adjust weights & add a creativity component if desired.
-      </div>
-    </section>
-
-    <section id="timeline">
-      <h2>7. Suggested Timeline</h2>
+      <h2>3. Noted Requirements</h2>
+      <p>All projects must meet the following baseline requirements:</p>
       <ol>
-        <li><strong>Week 1:</strong> Topic proposal + question refinement.</li>
-        <li><strong>Week 2:</strong> Data acquisition & initial EDA.</li>
-        <li><strong>Week 3:</strong> Feature engineering & baseline model.</li>
-        <li><strong>Week 4:</strong> Iterative modeling / validation.</li>
-        <li><strong>Week 5:</strong> Visualization polish & narrative drafting.</li>
-        <li><strong>Week 6:</strong> Final integration, QA, presentation prep.</li>
-      </ol>
-      <p><em>Adjust</em> based on actual academic calendar & breaks.</p>
-    </section>
-
-    <section id="submission">
-      <h2>8. Submission Instructions</h2>
-      <ul>
-        <li>Push final repo to GitHub (public or private with instructor access).</li>
-        <li>Tag a release (e.g., `v1.0-final`).</li>
-        <li>Provide link to report/presentation (PDF, deck, site, or app).</li>
-        <li>Include a 2–3 minute demo video link (if required).</li>
-        <li>Fill out reflection form (methodology choices, challenges).</li>
-      </ul>
-      <div class="callout danger">
-        <strong>Need Decision:</strong> Confirm required vs optional deliverables above.
-      </div>
-    </section>
-
-    <section id="integrity">
-      <h2>9. Academic Integrity & Collaboration</h2>
-      <ul>
-        <li>Cite all external code, models, and data sources.</li>
-        <li>Document AI-assisted code (tool + prompt summary).</li>
-        <li>No sharing of proprietary datasets beyond team.</li>
-        <li>Follow license terms for any third-party repository.</li>
-        <li>List each team member's contributions.</li>
-      </ul>
-    </section>
-
-    <section id="getting-started">
-      <h2>10. Getting Started Checklist</h2>
-      <ol>
-        <li>Confirm sport & scope (league, seasons).</li>
-        <li>Create repo with initial README & environment file.</li>
-        <li>Draft project question (submit for quick approval).</li>
-        <li>Acquire & snapshot raw data (immutable).</li>
-        <li>Set up processing pipeline (scripts/notebooks).</li>
-        <li>Define success metrics & validation approach.</li>
+        <li>All data must come from web scraping.</li>
+        <li>You must create a database.</li>
+        <li>You must use SQL to create the CSV files on which your web app will be based.</li>
+        <li>Your web app must be interactive.</li>
+        <li>Your web app must include a direct link to your project's GitHub repository.</li>
+        <li>Your web app must not be overly similar to any web app created during the course and must demonstrate originality.</li>
       </ol>
     </section>
 
-    <section id="resources">
-      <h2>11. Resources</h2>
-      <ul>
-        <li>Course lecture notes (analytics methods).</li>
-        <li>Open data portals (to be listed).</li>
-        <li>Model evaluation guides (cross-validation, calibration).</li>
-        <li>Visualization style guides (club/league branding optional).</li>
-        <li>Ethics & bias readings.</li>
-      </ul>
-      <p>Please provide any fixed resource links you want embedded.</p>
-    </section>
+    
 
-    <section id="next-steps">
-      <h2>Next Steps for Instructor Input</h2>
-      <p>Answer these to refine:</p>
-      <ol>
-        <li>Which football code? (Association vs American or allow either?)</li>
-        <li>Permitted leagues & seasons?</li>
-        <li>Team size (solo, pairs, groups of N)?</li>
-        <li>Presentation format & duration?</li>
-        <li>Are advanced ML / deep learning methods allowed or restricted?</li>
-        <li>Exact evaluation weights & any creativity / impact bonus?</li>
-        <li>Specific datasets to endorse or discourage?</li>
-        <li>Deadline dates (proposal, mid-point check, final submission)?</li>
-        <li>Required reflection questions?</li>
-        <li>Policy on AI tool usage disclosure?</li>
-      </ol>
+    <section id="timeline-submission">
+      <h2>4. Timeline & Submission</h2>
+      <p>The project is due by midnight on the day of our scheduled final exam. Students must publish their web application using GitHub Pages and submit the GitHub Pages URL to Blackboard before the deadline.</p>
+      <p>Ensure the GitHub Pages site includes the web app landing page (the project report) and a visible link to your project's GitHub repository.</p>
+    </section>
+    <section id="grading">
+      <h2>5. Grading Rubric</h2>
+      <p>The project is graded out of 200 points. This rubric maps to the course requirements.</p>
+      <ul>
+        <li><strong>Data Collection — 40 pts</strong>: Evidence that all data was obtained via web scraping; list of scraped URLs; a working example (code snippet) demonstrating the scrape.</li>
+        <li><strong>Database &amp; SQL — 40 pts</strong>: A database was created; SQL was used to produce the CSV files the app consumes; includes example queries that are correct and appropriate.</li>
+        <li><strong>Web App Functionality &amp; Interactivity — 60 pts</strong>: App is deployed on GitHub Pages (URL submitted); app is interactive; includes a visible link to the project's GitHub repository.</li>
+        <li><strong>Report / Landing Page (Communication) — 30 pts</strong>: Landing page states objective and key insights; includes required report sections (Overview, Web Scraping, Database, Web App); writing is clear and organized.</li>
+        <li><strong>Originality &amp; Academic Integrity — 30 pts</strong>: Work demonstrates originality and is not overly similar to class examples.</li>
+      </ul>
+      <p><em>Grade bands (percentage):</em> 90–100% (Excellent); 80–89% (Good); 70–79% (Satisfactory); 60–69% (Poor); &lt;60% (Fail).</p>
     </section>
   </main>
-  <footer>
-    <p>Draft version – will update as details are finalized.</p>
-    <p>&copy; 2025 Football Analytics Course</p>
-  </footer>
+  
 </body>
 </html>
